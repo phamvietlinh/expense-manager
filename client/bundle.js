@@ -46532,7 +46532,7 @@ var objectKeys = Object.keys || function (obj) {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+		value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -46565,315 +46565,315 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var querystring = __webpack_require__(168);
 
 var Update = function (_React$Component) {
-	_inherits(Update, _React$Component);
+		_inherits(Update, _React$Component);
 
-	function Update() {
-		_classCallCheck(this, Update);
+		function Update() {
+				_classCallCheck(this, Update);
 
-		var _this = _possibleConstructorReturn(this, (Update.__proto__ || Object.getPrototypeOf(Update)).call(this));
+				var _this = _possibleConstructorReturn(this, (Update.__proto__ || Object.getPrototypeOf(Update)).call(this));
 
-		_this.state = {
-			id: '',
-			description: '',
-			amount: '',
-			month: '',
-			year: '',
-			messageFromServer: '',
-			modalIsOpen: false
-		};
-		_this.update = _this.update.bind(_this);
-		_this.handleSelectChange = _this.handleSelectChange.bind(_this);
-		_this.onClick = _this.onClick.bind(_this);
-		_this.handleTextChange = _this.handleTextChange.bind(_this);
-		_this.openModal = _this.openModal.bind(_this);
-		_this.closeModal = _this.closeModal.bind(_this);
-		return _this;
-	}
+				_this.state = {
+						id: '',
+						description: '',
+						amount: '',
+						month: '',
+						year: '',
+						messageFromServer: '',
+						modalIsOpen: false
+				};
+				_this.update = _this.update.bind(_this);
+				_this.handleSelectChange = _this.handleSelectChange.bind(_this);
+				_this.onClick = _this.onClick.bind(_this);
+				_this.handleTextChange = _this.handleTextChange.bind(_this);
+				_this.openModal = _this.openModal.bind(_this);
+				_this.closeModal = _this.closeModal.bind(_this);
+				return _this;
+		}
 
-	_createClass(Update, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.setState({
-				id: this.props.expense._id,
-				description: this.props.expense.description ? this.props.expense.description : '',
-				amount: this.props.expense.amount ? this.props.expense.amount : '',
-				month: this.props.expense.month,
-				year: this.props.expense.year
-			});
-		}
-	}, {
-		key: 'openModal',
-		value: function openModal() {
-			this.setState({
-				modalIsOpen: true
-			});
-		}
-	}, {
-		key: 'closeModal',
-		value: function closeModal() {
-			this.setState({
-				modalIsOpen: false,
-				messageFromServer: ''
-			});
-		}
-	}, {
-		key: 'handleSelectChange',
-		value: function handleSelectChange(e) {
-			if (e.target.name == "month") {
-				this.setState({
-					month: e.target.value
-				});
-			}
-			if (e.target.name == "year") {
-				this.setState({
-					year: e.target.value
-				});
-			}
-		}
-	}, {
-		key: 'handleTextChange',
-		value: function handleTextChange(e) {
-			if (e.target.name == "description") {
-				this.setState({
-					description: e.target.value
-				});
-			}
-			if (e.target.name == "amount") {
-				this.setState({
-					amount: e.target.value
-				});
-			}
-		}
-	}, {
-		key: 'onClick',
-		value: function onClick(e) {
-			this.update(this);
-		}
-	}, {
-		key: 'update',
-		value: function update(e) {
-			_axios2.default.post('/update', querystring.stringify({
-				_id: e.state.id,
-				description: e.state.description,
-				amount: e.state.amount,
-				month: e.state.month,
-				year: e.state.year
-			}), {
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded"
+		_createClass(Update, [{
+				key: 'componentDidMount',
+				value: function componentDidMount() {
+						this.setState({
+								id: this.props.expense._id,
+								description: this.props.expense.description ? this.props.expense.description : '',
+								amount: this.props.expense.amount ? this.props.expense.amount : '',
+								month: this.props.expense.month,
+								year: this.props.expense.year
+						});
 				}
-			}).then(function (response) {
-				e.setState({
-					messageFromServer: response.data
-				});
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			if (this.state.messageFromServer == '') {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						_reactBootstrap.Button,
-						{ bsStyle: 'warning', bsSize: 'small', onClick: this.openModal },
-						_react2.default.createElement('span', { className: 'glyphicon glyphicon-edit' })
-					),
-					_react2.default.createElement(
-						_reactModal2.default,
-						{ isOpen: this.state.modalIsOpen,
-							onRequestClose: this.closeModal,
-							contentLabel: 'Add Expense',
-							className: 'Modal',
-							ariaHideApp: false },
-						_react2.default.createElement(
-							_reactRouterDom.Link,
-							{ to: { pathname: '/', search: '' }, style: { textDecoration: 'none' } },
-							_react2.default.createElement(
-								_reactBootstrap.Button,
-								{ bsStyle: 'danger', bsSize: 'small', onClick: this.closeModal },
-								_react2.default.createElement('span', { className: 'closebtn glyphicon glyphicon-remove' })
-							)
-						),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement(
-							'fieldset',
-							null,
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'description' },
-								'Description:'
-							),
-							_react2.default.createElement('input', { type: 'text', id: 'description', name: 'description', value: this.state.description, onChange: this.handleTextChange }),
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'amount' },
-								'Amount:'
-							),
-							_react2.default.createElement('input', { type: 'number', id: 'amount', name: 'amount', value: this.state.amount, onChange: this.handleTextChange }),
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'month' },
-								'Month:'
-							),
-							_react2.default.createElement(
-								'select',
-								{ id: 'month', name: 'month', value: this.state.month, onChange: this.handleSelectChange },
-								_react2.default.createElement(
-									'option',
-									{ value: 'Jan', id: 'Jan' },
-									'January'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Feb', id: 'Feb' },
-									'Febrary'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Mar', id: 'Mar' },
-									'March'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Apr', id: 'Apr' },
-									'April'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'May', id: 'May' },
-									'May'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Jun', id: 'Jun' },
-									'June'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Jul', id: 'Jul' },
-									'July'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Aug', id: 'Aug' },
-									'August'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Sep', id: 'Sep' },
-									'September'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Oct', id: 'Oct' },
-									'October'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Nov', id: 'Nov' },
-									'November'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: 'Dec', id: 'Dec' },
-									'December'
-								)
-							),
-							_react2.default.createElement(
-								'label',
-								{ htmlFor: 'year' },
-								'Year:'
-							),
-							_react2.default.createElement(
-								'select',
-								{ id: 'year', name: 'year', value: this.state.year, onChange: this.handleSelectChange },
-								_react2.default.createElement(
-									'option',
-									{ value: '2015', id: '17' },
-									'2015'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: '2016', id: '17' },
-									'2016'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: '2017', id: '17' },
-									'2017'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: '2018', id: '18' },
-									'2018'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: '2019', id: '19' },
-									'2019'
-								),
-								_react2.default.createElement(
-									'option',
-									{ value: '2020', id: '20' },
-									'2020'
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'button-center' },
-							_react2.default.createElement('br', null),
-							_react2.default.createElement(
-								_reactBootstrap.Button,
-								{ bsStyle: 'warning', bsSize: 'small', onClick: this.onClick },
-								'Update'
-							)
-						)
-					)
-				);
-			} else {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						_reactBootstrap.Button,
-						{ bsStyle: 'warning', bsSize: 'small', onClick: this.openModal },
-						_react2.default.createElement('span', { className: 'glyphicon glyphicon-edit' })
-					),
-					_react2.default.createElement(
-						_reactModal2.default,
-						{ isOpen: this.state.modalIsOpen,
-							onAfterOpen: this.afterOpenModal,
-							onRequestClose: this.closeModal,
-							contentLabel: 'Add Expense',
-							className: 'Modal' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'button-center' },
-							_react2.default.createElement(
-								'h3',
-								null,
-								this.state.messageFromServer
-							),
-							_react2.default.createElement(
-								_reactRouterDom.Link,
-								{ to: { pathname: '/', search: '' }, style: { textDecoration: 'none' } },
-								_react2.default.createElement(
-									_reactBootstrap.Button,
-									{ bsStyle: 'success', bsSize: 'small', onClick: this.closeModal },
-									'Close the Dialog'
-								)
-							)
-						)
-					)
-				);
-			}
-		}
-	}]);
+		}, {
+				key: 'openModal',
+				value: function openModal() {
+						this.setState({
+								modalIsOpen: true
+						});
+				}
+		}, {
+				key: 'closeModal',
+				value: function closeModal() {
+						this.setState({
+								modalIsOpen: false,
+								messageFromServer: ''
+						});
+				}
+		}, {
+				key: 'handleSelectChange',
+				value: function handleSelectChange(e) {
+						if (e.target.name == "month") {
+								this.setState({
+										month: e.target.value
+								});
+						}
+						if (e.target.name == "year") {
+								this.setState({
+										year: e.target.value
+								});
+						}
+				}
+		}, {
+				key: 'handleTextChange',
+				value: function handleTextChange(e) {
+						if (e.target.name == "description") {
+								this.setState({
+										description: e.target.value
+								});
+						}
+						if (e.target.name == "amount") {
+								this.setState({
+										amount: e.target.value
+								});
+						}
+				}
+		}, {
+				key: 'onClick',
+				value: function onClick(e) {
+						this.update(this);
+				}
+		}, {
+				key: 'update',
+				value: function update(e) {
+						_axios2.default.post('/update', querystring.stringify({
+								_id: e.state.id,
+								description: e.state.description,
+								amount: e.state.amount,
+								month: e.state.month,
+								year: e.state.year
+						}), {
+								headers: {
+										"Content-Type": "application/x-www-form-urlencoded"
+								}
+						}).then(function (response) {
+								e.setState({
+										messageFromServer: response.data
+								});
+						});
+				}
+		}, {
+				key: 'render',
+				value: function render() {
+						if (this.state.messageFromServer == '') {
+								return _react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(
+												_reactBootstrap.Button,
+												{ bsStyle: 'warning', bsSize: 'small', onClick: this.openModal },
+												_react2.default.createElement('span', { className: 'glyphicon glyphicon-edit' })
+										),
+										_react2.default.createElement(
+												_reactModal2.default,
+												{ isOpen: this.state.modalIsOpen,
+														onRequestClose: this.closeModal,
+														contentLabel: 'Add Expense',
+														className: 'Modal',
+														ariaHideApp: false },
+												_react2.default.createElement(
+														_reactRouterDom.Link,
+														{ to: { pathname: '/', search: '' }, style: { textDecoration: 'none' } },
+														_react2.default.createElement(
+																_reactBootstrap.Button,
+																{ bsStyle: 'danger', bsSize: 'small', onClick: this.closeModal },
+																_react2.default.createElement('span', { className: 'closebtn glyphicon glyphicon-remove' })
+														)
+												),
+												_react2.default.createElement('br', null),
+												_react2.default.createElement(
+														'fieldset',
+														null,
+														_react2.default.createElement(
+																'label',
+																{ htmlFor: 'description' },
+																'Description:'
+														),
+														_react2.default.createElement('input', { type: 'text', id: 'description', name: 'description', value: this.state.description, onChange: this.handleTextChange }),
+														_react2.default.createElement(
+																'label',
+																{ htmlFor: 'amount' },
+																'Amount:'
+														),
+														_react2.default.createElement('input', { type: 'number', id: 'amount', name: 'amount', value: this.state.amount, onChange: this.handleTextChange }),
+														_react2.default.createElement(
+																'label',
+																{ htmlFor: 'month' },
+																'Month:'
+														),
+														_react2.default.createElement(
+																'select',
+																{ id: 'month', name: 'month', value: this.state.month, onChange: this.handleSelectChange },
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Jan', id: 'Jan' },
+																		'January'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Feb', id: 'Feb' },
+																		'Febrary'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Mar', id: 'Mar' },
+																		'March'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Apr', id: 'Apr' },
+																		'April'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'May', id: 'May' },
+																		'May'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Jun', id: 'Jun' },
+																		'June'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Jul', id: 'Jul' },
+																		'July'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Aug', id: 'Aug' },
+																		'August'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Sep', id: 'Sep' },
+																		'September'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Oct', id: 'Oct' },
+																		'October'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Nov', id: 'Nov' },
+																		'November'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: 'Dec', id: 'Dec' },
+																		'December'
+																)
+														),
+														_react2.default.createElement(
+																'label',
+																{ htmlFor: 'year' },
+																'Year:'
+														),
+														_react2.default.createElement(
+																'select',
+																{ id: 'year', name: 'year', value: this.state.year, onChange: this.handleSelectChange },
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2015', id: '17' },
+																		'2015'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2016', id: '17' },
+																		'2016'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2017', id: '17' },
+																		'2017'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2018', id: '18' },
+																		'2018'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2019', id: '19' },
+																		'2019'
+																),
+																_react2.default.createElement(
+																		'option',
+																		{ value: '2020', id: '20' },
+																		'2020'
+																)
+														)
+												),
+												_react2.default.createElement(
+														'div',
+														{ className: 'button-center' },
+														_react2.default.createElement('br', null),
+														_react2.default.createElement(
+																_reactBootstrap.Button,
+																{ bsStyle: 'warning', bsSize: 'small', onClick: this.onClick },
+																'Update'
+														)
+												)
+										)
+								);
+						} else {
+								return _react2.default.createElement(
+										'div',
+										null,
+										_react2.default.createElement(
+												_reactBootstrap.Button,
+												{ bsStyle: 'warning', bsSize: 'small', onClick: this.openModal },
+												_react2.default.createElement('span', { className: 'glyphicon glyphicon-edit' })
+										),
+										_react2.default.createElement(
+												_reactModal2.default,
+												{ isOpen: this.state.modalIsOpen,
+														onAfterOpen: this.afterOpenModal,
+														onRequestClose: this.closeModal,
+														contentLabel: 'Add Expense',
+														className: 'Modal' },
+												_react2.default.createElement(
+														'div',
+														{ className: 'button-center' },
+														_react2.default.createElement(
+																'h3',
+																null,
+																this.state.messageFromServer
+														),
+														_react2.default.createElement(
+																_reactRouterDom.Link,
+																{ to: { pathname: '/', search: '' }, style: { textDecoration: 'none' } },
+																_react2.default.createElement(
+																		_reactBootstrap.Button,
+																		{ bsStyle: 'success', bsSize: 'small', onClick: this.closeModal },
+																		'Close the Dialog'
+																)
+														)
+												)
+										)
+								);
+						}
+				}
+		}]);
 
-	return Update;
+		return Update;
 }(_react2.default.Component);
 
 exports.default = Update;
